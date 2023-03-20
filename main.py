@@ -3,6 +3,7 @@ from typing import Dict, List, Tuple
 
 from PIL import Image, ImageColor
 
+
 class Alphabet:
     letters: Dict[str, Tuple[int, List[int]]]
 
@@ -35,7 +36,7 @@ class Alphabet:
                 encoded.append("#000000")
             else:
                 encoded += color[1]
-        
+
         return encoded
 
 
@@ -64,14 +65,16 @@ def load_alphabet(path: str) -> Alphabet:
 
     return alph
 
+
 def square_image(alphabet: Alphabet, text: str) -> Image.Image:
     colors = alphabet.encode_text(text)
     colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
 
-    img_size = int(len(colors) ** 0.5) + 1
+    img_size = int(len(colors)**0.5) + 1
     img = Image.new('RGB', (img_size, img_size), '#000000')
     img.putdata(colors)
     return img
+
 
 if __name__ == '__main__':
     args = {'a': 'alphabet.txt'}
@@ -82,7 +85,9 @@ if __name__ == '__main__':
             args[i[1:]] = next(it)
 
     if args.get('o', None) == None:
-        print('Usage: python3 main.py (-f FILE_NAME) (-t SOME_TEXT) -o OUTPUT.png')
+        print(
+            'Usage: python3 main.py (-f FILE_NAME) (-t SOME_TEXT) -o OUTPUT.png'
+        )
         exit()
 
     a = load_alphabet(args['a'])
