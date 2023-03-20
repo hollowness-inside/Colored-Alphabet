@@ -11,6 +11,16 @@ class Alphabet:
         colors_num = len(colors)
         self.letters[symbol] = (colors_num, colors)
 
+    def encode_char(self, char: str) -> tuple[int, list[str]]:
+        if char.isupper():
+            len1, let1 = self.letters['UPPER']
+            len2, let2 = self.letters[char.lower()]
+            return (len1 + len2, let1 + let2)
+
+        if char == ' ':
+            return self.letters['SPACE']
+        
+        return self.letters[char]
 
 def load_alphabet(path: str) -> Alphabet:
 
