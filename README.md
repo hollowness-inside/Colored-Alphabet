@@ -30,3 +30,15 @@ The converter is a CLI tool
 Usage: python3 main.py (-f FILE_NAME) (-t SOME_TEXT) [-l] -o OUTPUT.png
   -l  Draw colors in one row
 ```
+
+***
+# Imagine
+If we were to use a color-based alphabet in our daily lives, it would have several advantages over our current system.
+
+One of the most significant advantages would be the compactness of the text and signs. Color codes would take up much less space than traditional letters, as they only need to be large enough to be distinguishable by the human eye. This would lead to more compact and visually appealing text and signs.
+
+However, the transition to a color-based alphabet could be challenging for web designers and others who work with text and symbols. It would require a significant shift in the way we think about and design text-based content.
+
+On the other hand, for artists and designers, a color-based alphabet could be an exciting opportunity. Colors would bear much more meaning than shapes, which would allow for more expressive and creative uses of color in art and design.
+
+Overall, while there would be some challenges associated with the transition to a color-based alphabet, it could lead to a more visually interesting and compact world, with new opportunities for creative expression.
