@@ -1,3 +1,4 @@
+import sys
 from typing import Dict, List, Tuple
 
 from PIL import Image, ImageColor
@@ -69,3 +70,28 @@ def square_image(alphabet: Alphabet, text: str) -> Image.ImageL
     img = Image.new('RGB', (img_size, img_size), '#000000')
     img.putdata(colors)
     return img
+
+if __name__ == '__main__':
+    args = {'a': 'alphabet.txt'}
+    it = iter(sys.argv)
+
+    for i in it:
+        if i.startswith('-'):
+            args[i[1:]] = next(it)
+
+    if args.get('o', None) == None:
+        print('Usage: python3 main.py (-f FILE_NAME) (-t SOME_TEXT) -o OUTPUT.png')
+        exit()
+
+    a = load_alphabet(args['a'])
+
+    if path := args.get('f', None):
+        with open(path) as file:
+            words = ' '.join(file.read().split('\n'))
+            out = a.image_square(words)
+
+    elif text := args.get('t', None):
+        out = a.image_square(text)
+
+    # out = out.resize((out.width*10, out.height*10), Image.Resampling.NEAREST)
+    out.save(args['o'])
