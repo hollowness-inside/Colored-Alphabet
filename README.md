@@ -8,6 +8,7 @@ An alphabet that is based solely on colors and not shapes of letters
 
 It wouldn't be an alphabet without a table designated for it
 ![alphabet](https://github.com/hollowness-inside/Colored-Alphabet/blob/main/alphabet.png)
+[This alphabet table in Google Sheets](https://docs.google.com/spreadsheets/d/1H-gMX3_P3cESRFK0HV_VLRQyaFZVHoAX_yHarkpvNPY/edit?usp=sharing)
 
 Here's how it works:
 
