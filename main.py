@@ -87,11 +87,11 @@ if __name__ == '__main__':
 
     if path := args.get('f', None):
         with open(path) as file:
-            words = ' '.join(file.read().split('\n'))
-            out = a.image_square(words)
+            text = ' '.join(file.read().split('\n'))
+            out = square_image(a, text)
 
     elif text := args.get('t', None):
-        out = a.image_square(text)
+        out = square_image(a, text)
 
     # out = out.resize((out.width*10, out.height*10), Image.Resampling.NEAREST)
     out.save(args['o'])
