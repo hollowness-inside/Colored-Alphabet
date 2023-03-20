@@ -1,4 +1,15 @@
+from typing import Dict, List, Tuple
+
+
+class Alphabet:
+    letters: Dict[str, Tuple[int, List[int]]]
+
+    def __init__(self):
+        self.letters = {}
+        
+
 def load_alphabet(path: str) -> Alphabet:
+
     def readline():
         line = file.readline()
         if line == '':
