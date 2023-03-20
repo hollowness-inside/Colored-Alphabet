@@ -76,29 +76,47 @@ def square_image(alphabet: Alphabet, text: str) -> Image.Image:
     return img
 
 
+def line_image(alphabet: Alphabet, text: str) -> Image.Image:
+    colors = alphabet.encode_text(text)
+    colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
+
+    img_length = len(colors)
+    img = Image.new('RGB', (img_length, 1), "#000000")
+    img.putdata(colors)
+    return img
+
+
 if __name__ == '__main__':
     args = {'a': 'alphabet.txt'}
     it = iter(sys.argv)
 
     for i in it:
+        if i == '-l':
+            args['l'] = True
+            continue
+
         if i.startswith('-'):
             args[i[1:]] = next(it)
 
     if args.get('o', None) == None:
         print(
-            'Usage: python3 main.py (-f FILE_NAME) (-t SOME_TEXT) -o OUTPUT.png'
-        )
+            'Usage: python3 main.py (-f FILE_NAME) (-t SOME_TEXT) [-l] -o OUTPUT.png'
+            '\n\t-l\tDraw colors in one row')
         exit()
 
     a = load_alphabet(args['a'])
+    style = square_image
+
+    if args.get('l', False):
+        style = line_image
 
     if path := args.get('f', None):
         with open(path) as file:
             text = ' '.join(file.read().split('\n'))
-            out = square_image(a, text)
+            out = style(a, text)
 
     elif text := args.get('t', None):
-        out = square_image(a, text)
+        out = style(a, text)
 
     # out = out.resize((out.width*10, out.height*10), Image.Resampling.NEAREST)
     out.save(args['o'])
