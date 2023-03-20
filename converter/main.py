@@ -3,18 +3,22 @@ from typing import Dict, List, Tuple
 
 from PIL import Image, ImageColor
 
+Hex = str
+Colors = List[Hex]
+Litra = Tuple[int, Colors]
+
 
 class Alphabet:
-    letters: Dict[str, Tuple[int, List[int]]]
+    letters: Dict[str, Litra]
 
     def __init__(self):
         self.letters = {}
 
-    def _add_letter(self, symbol: str, colors: List[int]) -> None:
+    def _add_letter(self, symbol: str, colors: Colors) -> None:
         colors_num = len(colors)
         self.letters[symbol] = (colors_num, colors)
 
-    def encode_char(self, char: str) -> tuple[int, list[str]]:
+    def encode_char(self, char: str) -> Litra:
         if char.isupper():
             len1, let1 = self.letters['UPPER']
             len2, let2 = self.letters[char.lower()]
@@ -25,7 +29,7 @@ class Alphabet:
 
         return self.letters.get(char, None)
 
-    def encode_text(self, text: str) -> List[List[str]]:
+    def encode_text(self, text: str) -> List[Colors]:
         encoded = []
 
         for char in text:
