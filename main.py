@@ -1,5 +1,6 @@
 from typing import Dict, List, Tuple
 
+from PIL import Image, ImageColor
 
 class Alphabet:
     letters: Dict[str, Tuple[int, List[int]]]
@@ -59,3 +60,12 @@ def load_alphabet(path: str) -> Alphabet:
                 alph._add_letter(char, [row_color, column_colors[i]])
 
     return alph
+
+def square_image(alphabet: Alphabet, text: str) -> Image.ImageL
+    colors = alphabet.encode_text(text)
+    colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
+
+    img_size = int(len(colors) ** 0.5) + 1
+    img = Image.new('RGB', (img_size, img_size), '#000000')
+    img.putdata(colors)
+    return img
