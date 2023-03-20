@@ -35,6 +35,8 @@ class Alphabet:
                 encoded.append("#000000")
             else:
                 encoded += color[1]
+        
+        return encoded
 
 
 def load_alphabet(path: str) -> Alphabet:
