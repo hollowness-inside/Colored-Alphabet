@@ -5,24 +5,23 @@ from PIL import Image, ImageColor
 
 Hex = str
 Colors = List[Hex]
-Litra = Tuple[int, Colors]
-
 
 class Alphabet:
-    letters: Dict[str, Litra]
+    letters: Dict[str, Colors]
 
     def __init__(self):
         self.letters = {}
 
     def _add_letter(self, symbol: str, colors: Colors) -> None:
         colors_num = len(colors)
-        self.letters[symbol] = (colors_num, colors)
+        self.letters[symbol] = colors
 
-    def encode_char(self, char: str) -> Litra:
+    def encode_char(self, char: str) -> Colors:
         if char.isupper():
-            len1, let1 = self.letters['UPPER']
-            len2, let2 = self.letters[char.lower()]
-            return (len1 + len2, let1 + let2)
+            let1 = self.letters['UPPER']
+            let2 = self.letters[char.lower()]
+
+            return let1 + let2
 
         if char == ' ':
             return self.letters.get('SPACE', None)
@@ -37,9 +36,9 @@ class Alphabet:
 
             if color is None:
                 print(f'Unknown letter "{char}"')
-                encoded.append("#000000")
+                encoded.append(["#000000"])
             else:
-                encoded += color[1]
+                encoded.append(color)
 
         return encoded
 
@@ -72,6 +71,7 @@ def load_alphabet(path: str) -> Alphabet:
 
 def square_image(alphabet: Alphabet, text: str) -> Image.Image:
     colors = alphabet.encode_text(text)
+    colors = [hex for litra in colors for hex in litra]
     colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
 
     img_size = int(len(colors)**0.5) + 1
@@ -82,6 +82,7 @@ def square_image(alphabet: Alphabet, text: str) -> Image.Image:
 
 def line_image(alphabet: Alphabet, text: str) -> Image.Image:
     colors = alphabet.encode_text(text)
+    colors = [hex for litra in colors for hex in litra]
     colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
 
     img_length = len(colors)
