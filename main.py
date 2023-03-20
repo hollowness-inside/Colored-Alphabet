@@ -62,7 +62,7 @@ def load_alphabet(path: str) -> Alphabet:
 
     return alph
 
-def square_image(alphabet: Alphabet, text: str) -> Image.ImageL
+def square_image(alphabet: Alphabet, text: str) -> Image.Image:
     colors = alphabet.encode_text(text)
     colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
 
