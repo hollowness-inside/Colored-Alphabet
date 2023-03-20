@@ -18,9 +18,22 @@ class Alphabet:
             return (len1 + len2, let1 + let2)
 
         if char == ' ':
-            return self.letters['SPACE']
-        
-        return self.letters[char]
+            return self.letters.get('SPACE', None)
+
+        return self.letters.get(char, None)
+
+    def encode_text(self, text: str) -> List[List[str]]:
+        encoded = []
+
+        for char in text:
+            color = self.encode_char(char)
+
+            if color is None:
+                print(f'Unknown letter "{char}"')
+                encoded.append("#000000")
+            else:
+                encoded += color[1]
+
 
 def load_alphabet(path: str) -> Alphabet:
 
