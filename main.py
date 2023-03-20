@@ -6,7 +6,11 @@ class Alphabet:
 
     def __init__(self):
         self.letters = {}
-        
+
+    def _add_letter(self, symbol: str, colors: List[int]) -> None:
+        colors_num = len(colors)
+        self.letters[symbol] = (colors_num, colors)
+
 
 def load_alphabet(path: str) -> Alphabet:
 
