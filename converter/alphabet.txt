@@ -1,8 +1,8 @@
 	#ff0000		#ff9900		#ffff00		#00ff00		#00d5ff		#0000ff		#9900ff		#ff76a4		#888888		#ffffff		#000000	
 	e		t		a		o		i		n		s		r		h		SPACE		UPPER	
-#990000	w		d		ä		u		j		m		ß		p		g		QSTART		QEND	
-#b45f06	v				y		ü		l		ñ		z		b		k		(		)	
-#38761d	f		c		é		ö						x				q		[		]	
+#990000	w		d		ä		ö		j		ñ		ß		p		g		QSTART		QEND	
+#b45f06	v				y		u		l		m		z		b		k		(		)	
+#38761d	f		c		é		ü						x				q		[		]	
 #0b5394	0		1		2		3		4		+		*		!		—		{		}	
 #1d1d5d	9		8		7		6		5		-		/		?		|		<		>	
 #910f4f	_		'		@		:		\		^		=				€		,		.	
