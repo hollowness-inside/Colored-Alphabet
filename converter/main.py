@@ -67,10 +67,12 @@ def load_alphabet(path: str) -> Alphabet:
 
     return alph
 
+def flatten(l):
+    return [item for sublist in l for item in sublist]
 
 def square_image(alphabet: Alphabet, text: str) -> Image.Image:
     colors = alphabet.encode_text(text)
-    colors = [hex for litra in colors for hex in litra]
+    colors = flatten(colors)
     colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
 
     img_size = int(len(colors)**0.5) + 1
@@ -81,7 +83,7 @@ def square_image(alphabet: Alphabet, text: str) -> Image.Image:
 
 def line_image(alphabet: Alphabet, text: str) -> Image.Image:
     colors = alphabet.encode_text(text)
-    colors = [hex for litra in colors for hex in litra]
+    colors = flatten(colors)
     colors = [ImageColor.getcolor(x, 'RGB') for x in colors]
 
     img_length = len(colors)
